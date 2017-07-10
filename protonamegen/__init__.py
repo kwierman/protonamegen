@@ -12,12 +12,12 @@ def __initialize__():
   __nouns__ = []
   __adjectives__ = []
   for synset in wn.all_synsets('n'):
-    word = synset.name().split('.n').split('.s')[0]
-    if not "_" in word or '-' in word:
+    word = synset.name().split('.n')[0].split('.s')[0]
+    if not u'_' in word or u'-' in word:
       __nouns__.append(word)
   for synset in wn.all_synsets('a'):
-    word = synset.name().split('.a')[0]
-    if not "_" in word or '-' in word:
+    word = synset.name().split('.a')[0].split('.s')[0]
+    if not u'_' in word or u'-' in word:
       __adjectives__.append(word)
 
 
@@ -35,5 +35,6 @@ def gen_adjective():
   return random.choice(__adjectives__)
 
 
-def gen_name():
-  return gen_adjective() + "_" + gen_noun()
+def gen_name(n):
+  for i in range(n):
+    yield gen_adjective() + "_" + gen_noun()

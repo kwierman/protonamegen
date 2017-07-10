@@ -4,8 +4,10 @@ from protonamegen import gen_name
 
 
 @click.command()
-def gen_proto_name():
-  print gen_name()
+@click.argument('n', nargs=1, type=click.INT, default=1)
+def gen_proto_name(n):
+  for i in gen_name(n):
+    print i
 
 
 @click.command()
