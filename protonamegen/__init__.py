@@ -1,6 +1,7 @@
 import nltk
 import random
 
+
 __nouns__      = None
 __adjectives__ = None
 
@@ -12,12 +13,12 @@ def __initialize__():
   __nouns__ = []
   __adjectives__ = []
   for synset in wn.all_synsets('n'):
-    word = synset.name().split('.n')[0].split('.s')[0]
-    if not u'_' in word or u'-' in word:
+    word = str(synset.name().split('.n')[0].split('.s')[0])
+    if not '_' in word and not '-' in word:
       __nouns__.append(word)
   for synset in wn.all_synsets('a'):
-    word = synset.name().split('.a')[0].split('.s')[0]
-    if not u'_' in word or u'-' in word:
+    word = str(synset.name().split('.a')[0].split('.s')[0])
+    if not '_' in word and not '-' in word:
       __adjectives__.append(word)
 
 
